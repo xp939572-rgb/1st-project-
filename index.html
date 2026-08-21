@@ -268,6 +268,7 @@ h2.section-title{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4
 .contact-info .item{padding:22px 0;border-bottom:1px solid var(--line);}
 .contact-info .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
 .contact-info .v{font-family:var(--serif);font-size:20px;}
+.contact-info .v a:hover{color:var(--champagne);}
 .contact-note{margin-top:34px;padding:18px 20px;border:1px solid var(--line);font-size:12.5px;line-height:1.7;color:var(--muted);}
 form{display:flex;flex-direction:column;gap:22px;}
 .field{position:relative;border-bottom:1px solid var(--line);padding-bottom:10px;}
@@ -315,10 +316,26 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
 .sound-toggle svg{width:18px;height:18px;stroke:var(--ivory-dim);}
 .sound-toggle.on svg{stroke:var(--champagne);}
 
+.whatsapp-float{
+  position:fixed;bottom:26px;left:26px;z-index:400;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--champagne);color:var(--obsidian);
+  display:flex;align-items:center;justify-content:center;cursor:none;
+  box-shadow:0 10px 28px rgba(185,146,79,.35);
+  transition:transform .35s, box-shadow .35s;
+}
+.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(185,146,79,.5);}
+.whatsapp-float svg{width:24px;height:24px;}
+@media (max-width:640px){
+  .whatsapp-float{width:46px;height:46px;bottom:20px;left:20px;}
+  .whatsapp-float svg{width:21px;height:21px;}
+}
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
 }
 </style>
+<link rel="stylesheet" href="/css/booking.css">
 </head>
 <body>
 
@@ -341,7 +358,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
     <a href="#social">Follow</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="navcta">Book a Consultation</a>
+  <a href="#book" class="navcta" data-open-booking>Book a Consultation</a>
 </nav>
 
 <canvas id="particles"></canvas>
@@ -356,7 +373,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
       <p class="statement">"Clarity, precision, and determination — for every case, every client."</p>
       <p class="lede">Practicing Advocate providing professional legal consultation, drafting and representation in Civil, Family and Criminal matters under Pakistani law.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn btn-solid" data-cursor="view">Book a Consultation <span class="arrow">→</span></a>
+        <a href="#book" class="btn btn-solid" data-cursor="view" data-open-booking>Book a Consultation <span class="arrow">→</span></a>
         <a href="#practice" class="btn btn-outline" data-cursor="view">Explore My Practice <span class="arrow">→</span></a>
       </div>
     </div>
@@ -558,6 +575,18 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
           <div class="k">Areas Served</div>
           <div class="v">Pakistan &amp; Overseas Clients</div>
         </div>
+        <div class="item">
+          <div class="k">WhatsApp</div>
+          <div class="v"><a href="https://wa.me/923125539227" target="_blank" rel="noopener" data-cursor="chat">0312 5539227</a></div>
+        </div>
+        <div class="item">
+          <div class="k">Phone</div>
+          <div class="v"><a href="tel:+9230952422946" data-cursor="call">030 9524 22946</a></div>
+        </div>
+        <div class="item">
+          <div class="k">Telephone</div>
+          <div class="v">0544</div>
+        </div>
         <div class="contact-note">Please do not include highly sensitive or confidential information in this initial form. Submitting this form does not create an attorney-client relationship.</div>
       </div>
 
@@ -639,6 +668,9 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
         <a href="https://youtube.com/@sabamuzaffar3635?si=tdGZNW_pujrFWrlj" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.tiktok.com/@advsabakayani?_r=1&_t=ZS-98s7Yk14BNZ" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.instagram.com/muzaffar_law_chamber?igsh=NDl6MjB6djVnbDhn" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/923125539227" target="_blank" rel="noopener">WhatsApp: 0312 5539227</a>
+        <a href="tel:+9230952422946">Call: 030 9524 22946</a>
+        <span style="opacity:.7;">Telephone: 0544</span>
       </div>
     </div>
     <p class="disclaimer">The information provided on this website is for general informational purposes only and does not constitute legal advice, nor does it create an attorney-client relationship. Services are limited to matters relating to Pakistani law; foreign-law matters require advice from a lawyer qualified in the relevant jurisdiction. For advice on a specific matter, please book a consultation.</p>
@@ -649,6 +681,10 @@ footer{padding:60px 0 40px;border-top:1px solid var(--line);}
 <button class="sound-toggle" id="soundToggle" data-cursor="view" aria-label="Toggle ambient sound">
   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path id="waveOn" d="M15.5 8.5a5 5 0 0 1 0 7" style="display:none"/><line x1="16" y1="9" x2="21" y2="15" id="waveOff"/><line x1="21" y1="9" x2="16" y2="15" id="waveOff2"/></svg>
 </button>
+
+<a href="https://wa.me/923125539227" target="_blank" rel="noopener" class="whatsapp-float" data-cursor="chat" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.07c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.1.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.93 0-1.4.73-2.08.99-2.36.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.61-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.9.91.28.14.47.21.53.33.07.12.07.68-.17 1.36Z"/></svg>
+</a>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -776,5 +812,80 @@ document.getElementById('soundToggle').addEventListener('click', function(){
   if(soundOn){ startAmbience(); } else { stopAmbience(); }
 });
 </script>
+<!-- ============ CONSULTATION BOOKING MODAL ============ -->
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-modal">
+    <button class="booking-close" id="bookingClose" aria-label="Close booking form">✕</button>
+    <h2>Book a Consultation</h2>
+    <p style="color:var(--ivory-dim,#c9c4b6);font-size:14px;">Saba Muzaffer Kayani, Advocate</p>
+
+    <div class="fee-row">
+      <span class="label">Consultation Fee</span>
+      <span class="amount">PKR 1,500</span>
+    </div>
+
+    <div class="form-error-banner" id="bookingErrorBanner"></div>
+
+    <form class="booking-form" id="bookingForm" novalidate>
+      <div class="field" data-field="fullName">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" required autocomplete="name">
+        <div class="field-error"></div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field" data-field="email">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+          <div class="field-error"></div>
+        </div>
+        <div class="field" data-field="phone">
+          <label for="phone">Mobile Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="03XXXXXXXXX" required autocomplete="tel">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field" data-field="appointmentDate">
+          <label for="appointmentDate">Preferred Date *</label>
+          <input type="date" id="appointmentDate" name="appointmentDate" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="field" data-field="appointmentTime">
+          <label for="appointmentTime">Preferred Time *</label>
+          <input type="time" id="appointmentTime" name="appointmentTime" required>
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="field" data-field="consultationType">
+        <label for="consultationType">Consultation Type *</label>
+        <select id="consultationType" name="consultationType" required>
+          <option value="Civil Law">Civil Law</option>
+          <option value="Family Law">Family Law</option>
+          <option value="Criminal Law">Criminal Law</option>
+          <option value="Overseas / International Client">Overseas / International Client</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field" data-field="description">
+        <label for="description">Brief Description (optional)</label>
+        <textarea id="description" name="description" rows="3" maxlength="2000"></textarea>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="warning-note">
+        Please do not include confidential or highly sensitive information in this initial booking form. Submitting this form does not create an attorney-client relationship.
+      </div>
+
+      <button type="submit" class="pay-btn" id="payBtn">Pay PKR 1,500</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/booking.js"></script>
 </body>
 </html>
