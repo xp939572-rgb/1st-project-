@@ -1,0 +1,16 @@
+{
+  "name": "smk-consultation-booking",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Consultation booking + PayFast payment system for Saba Muzaffer Kayani, Advocate",
+  "scripts": {
+    "dev": "vercel dev",
+    "db:migrate": "psql \"$DATABASE_URL\" -f schema.sql"
+  },
+  "dependencies": {
+    "pg": "^8.11.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
